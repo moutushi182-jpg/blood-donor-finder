@@ -396,6 +396,7 @@ def submit_blood_request():
 
 # ---------------- START APPLICATION ----------------
 
+init_db()
+
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True)
