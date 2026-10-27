@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | BloodConnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🩸 BloodConnect</div>
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </nav>
+
+    <section class="register-section">
+        <h2>Admin Login</h2>
+        <p>Authorized administrators only.</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="flash-message">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('admin_login') }}">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"
+                   placeholder="Enter admin username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"
+                   placeholder="Enter admin password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </section>
+</body>
+</html>

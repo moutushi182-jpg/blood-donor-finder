@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donor Finder | BloodConnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <h2 class="logo">🩸 Blood<span>Connect</span></h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#find">Find Donors</a></li>
+            <li><a href="#register">Register</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <p class="tagline">GIVE BLOOD · SAVE LIVES</p>
+        <h1>Someone Needs<br><span>Your Blood</span> Today.</h1>
+        <p class="description">
+            Connect with potential blood donors in your area.
+            A small act of kindness can make a life-saving difference.
+        </p>
+        <a href="#find" class="btn">Find Blood Donors</a>
+        <a href="#register" class="btn secondary">Become a Donor</a>
+    </div>
+
+    <div class="hero-card">
+        <div class="blood-icon">🩸</div>
+        <h2>Be Someone's Hero</h2>
+        <p>Your kindness can help save a life.</p>
+        <div class="stats">
+            <div><h3>8</h3><p>Blood Groups</p></div>
+            <div><h3>1</h3><p>Shared Mission</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="search-section" id="find">
+    <h2>Find a Blood Donor</h2>
+    <p>Choose a blood group and enter a city to search registered donors.</p>
+
+    <form class="search-form" action="{{ url_for('home') }}" method="GET">
+        <select name="blood_group" required>
+            <option value="">Select Blood Group</option>
+            {% for group in ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'] %}
+            <option value="{{ group }}" {% if blood_group == group %}selected{% endif %}>
+                {{ group }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <input type="text" name="city" placeholder="Enter city or location"
+               value="{{ city }}" required>
+
+        <button type="submit" class="btn">Search Donors</button>
+    </form>
+
+    {% if searched %}
+        <div class="results">
+            <h3>Search Results</h3>
+
+            {% if donors %}
+                <p>{{ donors|length }} matching donor(s) found.</p>
+
+                <div class="donor-list">
+                    {% for donor in donors %}
+                    <div class="donor-card">
+                        <div class="donor-blood">{{ donor['blood_group'] }}</div>
+                        <h3>{{ donor['name'] }}</h3>
+                        <p>📍 {{ donor['city'] }}</p>
+                        <p>Contact details are shared only with donor consent.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No matching donors found. Try another city or blood group.</p>
+            {% endif %}
+        </div>
+    {% endif %}
+</section>
+
+<section class="register-section" id="register">
+    <div>
+        <p class="tagline">MAKE A DIFFERENCE</p>
+        <h2>Become a Blood Donor</h2>
+        <p>Register your interest and help people find potential donors.</p>
+    </div>
+
+    <form class="register-form" action="{{ url_for('register') }}" method="POST">
+        <input type="text" name="name" placeholder="Your full name"
+               maxlength="80" required>
+
+        <select name="blood_group" required>
+            <option value="">Select Blood Group</option>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+            <option>O+</option>
+            <option>O-</option>
+        </select>
+
+        <input type="text" name="city" placeholder="Your city"
+               maxlength="100" required>
+
+        <input type="tel" name="phone" placeholder="10-digit mobile number"
+               pattern="[0-9]{10}" maxlength="10" required>
+
+        <label class="consent">
+            <input type="checkbox" name="consent" required>
+            I agree to register as a potential donor and allow my details
+            to be stored for this student-project prototype.
+        </label>
+
+        <button type="submit" class="btn">Register as Donor</button>
+    </form>
+</section>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="flash-messages">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endwith %}
+
+<footer>
+    <h3>🩸 BloodConnect</h3>
+    <p>Connecting people. Supporting lifesaving donations.</p>
+    <p class="disclaimer">
+        Student project prototype. Donor availability, eligibility and
+        blood compatibility must be confirmed by qualified healthcare
+        professionals. In an emergency, contact a hospital.
+    </p>
+    <p>© 2026 BloodConnect | Student Project</p>
+</footer>
+
+</body>
+</html>

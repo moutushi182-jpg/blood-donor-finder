@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Blood | BloodConnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .request-container {
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .request-container h1 {
+            color: #b5121b;
+            margin-bottom: 10px;
+        }
+
+        .request-container p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .request-container label {
+            display: block;
+            margin: 15px 0 7px;
+            font-weight: 600;
+        }
+
+        .request-container input,
+        .request-container select,
+        .request-container textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .request-container button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            border: none;
+            border-radius: 7px;
+            background: #b5121b;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .request-container button:hover {
+            background: #900d15;
+        }
+
+        .notice {
+            margin-top: 18px;
+            padding: 12px;
+            background: #fff3f3;
+            border-left: 4px solid #b5121b;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🩸 BloodConnect</div>
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </nav>
+
+    <main class="request-container">
+        <h1>Request Blood</h1>
+        <p>Submit your request so the team can coordinate with potential donors.</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="flash-message">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('submit_blood_request') }}">
+            <label for="requester_name">Your Name</label>
+            <input
+                type="text"
+                id="requester_name"
+                name="requester_name"
+                maxlength="100"
+                required
+            >
+
+            <label for="blood_group">Required Blood Group</label>
+            <select id="blood_group" name="blood_group" required>
+                <option value="">Select blood group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+
+            <label for="city">City</label>
+            <input
+                type="text"
+                id="city"
+                name="city"
+                maxlength="100"
+                required
+            >
+
+            <label for="units">Units Required</label>
+            <select id="units" name="units" required>
+                <option value="">Select units</option>
+                <option value="1">1 unit</option>
+                <option value="2">2 units</option>
+                <option value="3">3 units</option>
+                <option value="4">4 units</option>
+                <option value="5">5 units</option>
+            </select>
+
+            <label for="hospital">Hospital or Medical Facility</label>
+            <input
+                type="text"
+                id="hospital"
+                name="hospital"
+                maxlength="150"
+                required
+            >
+
+            <label for="contact">Contact Number</label>
+            <input
+                type="tel"
+                id="contact"
+                name="contact"
+                inputmode="numeric"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                minlength="10"
+                placeholder="10-digit mobile number"
+                required
+            >
+
+            <label for="urgency">Urgency</label>
+            <select id="urgency" name="urgency" required>
+                <option value="">Select urgency</option>
+                <option value="Routine">Routine</option>
+                <option value="Urgent">Urgent</option>
+                <option value="Emergency">Emergency</option>
+            </select>
+
+            <button type="submit">Submit Blood Request</button>
+        </form>
+
+        <div class="notice">
+            <strong>Important:</strong> Submitting this form does not guarantee
+            blood availability. For emergencies, contact the hospital blood bank
+            or emergency services directly.
+        </div>
+    </main>
+</body>
+</html>

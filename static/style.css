@@ -1,0 +1,494 @@
+/* =========================================
+   BLOOD DONOR FINDER — COMPLETE STYLESHEET
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #292929;
+    background: #ffffff;
+    line-height: 1.6;
+}
+
+/* NAVIGATION BAR */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    background: #ffffff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    color: #c62828;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #333333;
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 28px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.navbar a:hover {
+    color: #c62828;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 520px;
+    padding: 75px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    background: linear-gradient(135deg, #fff0f0, #ffffff);
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.tagline {
+    color: #c62828;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #c62828;
+}
+
+.description {
+    color: #666666;
+    max-width: 500px;
+    margin-bottom: 28px;
+}
+
+/* BUTTONS */
+
+.btn {
+    display: inline-block;
+    background: #c62828;
+    color: #ffffff;
+    padding: 13px 22px;
+    border: 1px solid #c62828;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background: #a71919;
+    border-color: #a71919;
+    transform: translateY(-1px);
+}
+
+.secondary {
+    background: #ffffff;
+    color: #c62828;
+    border: 1px solid #c62828;
+    margin-left: 8px;
+}
+
+.secondary:hover {
+    background: #c62828;
+    color: #ffffff;
+}
+
+/* HERO CARD */
+
+.hero-card {
+    background: #ffffff;
+    text-align: center;
+    width: 320px;
+    min-width: 260px;
+    padding: 35px 25px;
+    border-radius: 18px;
+    box-shadow: 0 10px 40px rgba(150, 0, 0, 0.12);
+}
+
+.blood-icon {
+    font-size: 65px;
+    margin-bottom: 12px;
+}
+
+.hero-card h2 {
+    color: #c62828;
+    margin-bottom: 10px;
+}
+
+.hero-card p {
+    color: #777777;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+}
+
+.stats h3 {
+    color: #c62828;
+    font-size: 28px;
+}
+
+.stats p {
+    font-size: 14px;
+}
+
+/* DONOR SEARCH SECTION */
+
+.search-section {
+    text-align: center;
+    padding: 70px 8%;
+    background: #ffffff;
+}
+
+.search-section h2,
+.register-section h2 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.search-section > p {
+    color: #777777;
+    margin-bottom: 30px;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.search-form select,
+.search-form input {
+    padding: 14px;
+    width: 230px;
+    border: 1px solid #dddddd;
+    border-radius: 7px;
+    font-size: 15px;
+    background: #ffffff;
+    color: #333333;
+    outline: none;
+}
+
+.search-form select:focus,
+.search-form input:focus,
+.register-form input:focus,
+.register-form select:focus {
+    border-color: #c62828;
+    box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+}
+
+/* SEARCH RESULTS */
+
+.results {
+    max-width: 1000px;
+    margin: 35px auto 0;
+}
+
+.results h3 {
+    margin-bottom: 12px;
+}
+
+.results > p {
+    color: #666666;
+}
+
+.donor-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.donor-card {
+    width: 260px;
+    padding: 22px;
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    overflow-wrap: anywhere;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.donor-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(150, 0, 0, 0.1);
+}
+
+.donor-blood {
+    display: inline-block;
+    background: #ffe6e6;
+    color: #c62828;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.donor-card h3 {
+    margin-bottom: 8px;
+    color: #333333;
+}
+
+.donor-card p {
+    color: #666666;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+/* REGISTRATION SECTION */
+
+.register-section {
+    background: #fff3f3;
+    padding: 60px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.register-section > div {
+    max-width: 650px;
+}
+
+.register-section p:not(.tagline) {
+    color: #666666;
+}
+
+/* REGISTRATION FORM */
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(150, 0, 0, 0.08);
+}
+
+.register-form input:not([type="checkbox"]),
+.register-form select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #dddddd;
+    border-radius: 7px;
+    font-size: 15px;
+    background: #ffffff;
+    color: #333333;
+}
+
+.consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #555555;
+    line-height: 1.5;
+}
+
+.consent input {
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.register-form button {
+    width: 100%;
+}
+
+/* SUCCESS AND ERROR MESSAGES */
+
+.flash-messages {
+    max-width: 700px;
+    margin: 25px auto;
+    padding: 15px 20px;
+    background: #eaf8ee;
+    color: #216e39;
+    border: 1px solid #c6e8cf;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* FOOTER */
+
+footer {
+    background: #252525;
+    color: #ffffff;
+    text-align: center;
+    padding: 35px 8%;
+}
+
+footer h3 {
+    color: #ff7777;
+    margin-bottom: 10px;
+}
+
+footer p {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.disclaimer {
+    max-width: 750px;
+    margin: 15px auto;
+    color: #cccccc;
+}
+
+/* TABLETS AND MOBILE PHONES */
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 18px 5%;
+    }
+
+    .navbar ul {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 50px 6%;
+        gap: 35px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .secondary {
+        margin: 10px 0 0;
+    }
+
+    .search-section {
+        padding: 50px 6%;
+    }
+
+    .search-section h2,
+    .register-section h2 {
+        font-size: 28px;
+    }
+
+    .search-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-form select,
+    .search-form input,
+    .search-form button {
+        width: 100%;
+    }
+
+    .register-section {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 50px 6%;
+        gap: 25px;
+    }
+
+    .register-form {
+        max-width: 100%;
+    }
+
+    .donor-card {
+        width: 100%;
+    }
+
+    .results {
+        padding: 0 5px;
+    }
+
+    footer {
+        padding: 30px 6%;
+    }
+}
+
+/* SMALL MOBILE PHONES */
+
+@media (max-width: 400px) {
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .navbar ul {
+        gap: 12px;
+    }
+
+    .btn {
+        text-align: center;
+    }
+
+    .stats {
+        gap: 8px;
+    }
+}
